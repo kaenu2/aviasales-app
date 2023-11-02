@@ -1,0 +1,21 @@
+.transfers {
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.10);
+  padding: 20px 0 10px;
+  width: 230px;
+  @media (max-width: 710px) {
+    width: 100%;
+  }
+  &__title{
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 0 0 20px 20px;
+  }
+  &__list{
+    display: flex;
+    flex-direction: column;
+  }
+}

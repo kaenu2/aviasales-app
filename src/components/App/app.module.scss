@@ -1,0 +1,25 @@
+.container{
+  max-width: 720px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  @media (max-width: 710px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.right {
+  flex: 0 1 60%;
+  @media (max-width: 480px) {
+    flex: 0 1 100%;
+    width: 100%;
+  }
+}
+.btn-parent {
+  margin: 20px 0;
+}

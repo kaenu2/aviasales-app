@@ -1,0 +1,26 @@
+.warning {
+  background-color: #FFFBE6;
+  border: 1px solid #FFE58F;
+}
+.error {
+  border: 1px solid #FFCCC7;
+  background-color: #FFF2F0;
+}
+
+.informational {
+  border: 1px solid #91CAFF;
+  background-color: #E6F4FF;
+}
+
+.message-parent {
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+  &__title{
+    font-size: 18px;
+    padding: 0 0 10px;
+  }
+  &__descr{
+    font-size: 14px;
+  }
+}
