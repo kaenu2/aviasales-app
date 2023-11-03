@@ -1,4 +1,4 @@
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
+import { useSelector, TypedUseSelectorHook } from 'react-redux';
 
 import { RootState } from '../store/reducers';
 

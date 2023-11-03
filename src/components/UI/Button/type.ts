@@ -4,7 +4,7 @@ export interface IProps {
   label: string;
   type?: TButtonsType;
   borderStyles?: TBorderStyles;
-  callback: (e: React.MouseEvent<HTMLButtonElement>) => any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => unknown;
 }
 
 export enum EButtonsType {

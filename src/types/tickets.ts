@@ -32,7 +32,7 @@ interface IFetchTickets {
 }
 interface IFetchTicketsSuccess {
   type: ETicketsActionsTypes.FETCH_TICKETS_SUCCESS;
-  payload: any;
+  payload: { tickets: ITicket[]; stop: boolean };
 }
 interface IFetchTicketsError {
   type: ETicketsActionsTypes.FETCH_TICKETS_ERROR;
