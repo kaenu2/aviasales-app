@@ -13,9 +13,19 @@ const TicketItem = ({ carrier, segments, price }: ITicket) => {
     };
   };
 
-  const updatePriceVisible = (value: number) => {
-    const priceStr = String(value).split('').reverse();
-    return `${priceStr.filter((el, i) => i <= 2)} ${priceStr.filter((el, i) => i > 2)}`;
+  const updatePriceVisible = (value: number): string => {
+    const priceArr = String(value).split('').reverse();
+    // const res = [];
+    let res = '';
+    for (let i = 1; i <= priceArr.length; i++) {
+      const element = priceArr[i - 1];
+      if (i % 3 === 0) {
+        res += `${element} `;
+      } else {
+        res += element;
+      }
+    }
+    return res.split('').reverse().join('');
   };
 
   return (
