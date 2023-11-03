@@ -3,6 +3,7 @@
   padding: 10px 0 10px 30px;
   background: transparent;
   transition: background .3s ease-in-out;
+  cursor: pointer;
   &:hover{
     background: #F1FCFF;
   }
@@ -19,14 +20,22 @@
     left: -30px;
     width: 20px;
     height: 20px;
+    border-radius: 2px;
     background-image: url('./img/checkbox.png');
   }
 }
 
 .input{
   opacity: 0;
-  visibility: hidden;
+  clip-path: circle(0);
   &:checked ~ .name::before {
     background-image: url('./img/checkbox-checked.png');
+  }
+  &:checked:focus ~ .name::before {
+    background-image: url('./img/checkbox-checked.png');
+    box-shadow: 0 0 2px 2px #2196F3;
+  }
+  &:focus ~ .name::before {
+    box-shadow: 0 0 2px 2px #2196F3;
   }
 }
