@@ -3,7 +3,7 @@ import React from 'react';
 import './message.scss';
 import { EType, IProps, TType } from './type';
 
-export const Message = ({ label, type }: IProps) => {
+export const Message = ({ label, type, title }: IProps) => {
   const onCheckType = (value: TType): string => {
     switch (value) {
       case EType.warning:
@@ -28,7 +28,7 @@ export const Message = ({ label, type }: IProps) => {
 
   return (
     <div className={`message-parent ${resultCheckType}`}>
-      <h4 className="message-parent__title">{onRenderTitle(resultCheckType)}</h4>
+      <h4 className="message-parent__title">{title ? title : onRenderTitle(resultCheckType)}</h4>
       <p className="message-parent__descr">{label}</p>
     </div>
   );

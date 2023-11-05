@@ -4,6 +4,7 @@ export interface ITicketsState {
   tickets: ITicket[] | [];
   stop: boolean;
   searchId: string;
+  hasNetworkError: boolean;
 }
 
 export interface ITicket {
@@ -25,6 +26,7 @@ export enum ETicketsActionsTypes {
   FETCH_TICKETS_SUCCESS = 'FETCH_TICKETS_SUCCESS',
   FETCH_TICKETS_ERROR = 'FETCH_TICKETS_ERROR',
   FETCH_SEARCH_ID = 'FETCH_SEARCH_ID',
+  NETWORK_ERROR = 'NETWORK_ERROR',
 }
 
 interface IFetchTickets {
@@ -42,5 +44,14 @@ interface IFetchSearchId {
   type: ETicketsActionsTypes.FETCH_SEARCH_ID;
   payload: string;
 }
+interface INetworkError {
+  type: ETicketsActionsTypes.NETWORK_ERROR;
+  payload: boolean;
+}
 
-export type TTicketsActions = IFetchTickets | IFetchTicketsSuccess | IFetchTicketsError | IFetchSearchId;
+export type TTicketsActions =
+  | IFetchTickets
+  | IFetchTicketsSuccess
+  | IFetchTicketsError
+  | IFetchSearchId
+  | INetworkError;

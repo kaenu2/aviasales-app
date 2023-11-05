@@ -1,6 +1,7 @@
 export interface IProps {
   label: string;
   type?: TType;
+  title?: string | undefined;
 }
 
 export enum EType {

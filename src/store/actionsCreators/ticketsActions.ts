@@ -14,11 +14,18 @@ export const fetchTickets = (searchId: string) => {
       if (response.ok) {
         const data = await response.json();
         dispatch({ type: ETicketsActionsTypes.FETCH_TICKETS_SUCCESS, payload: data });
-      } else {
-        throw new Error('');
+        return;
       }
-    } catch (e) {
-      dispatch({ type: ETicketsActionsTypes.FETCH_TICKETS_ERROR });
+      if (response.status) {
+        throw new Error(`${response.status}`);
+      }
+      throw new Error('Network error');
+    } catch (e: any) {
+      if (!isNaN(e.message)) {
+        dispatch({ type: ETicketsActionsTypes.FETCH_TICKETS_ERROR });
+      } else {
+        dispatch({ type: ETicketsActionsTypes.NETWORK_ERROR, payload: false });
+      }
     }
   };
 };

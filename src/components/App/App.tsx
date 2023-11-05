@@ -9,7 +9,7 @@ import styles from './app.module.scss';
 
 const App = () => {
   const { fetchTickets, fetchSearchId } = useActions();
-  const { searchId, stop, isLoading, tickets } = useTypedSelector((state) => state.ticketsReducer);
+  const { searchId, stop, isLoading, tickets, hasNetworkError } = useTypedSelector((state) => state.ticketsReducer);
   const { visibleTicketsLength } = useTypedSelector((state) => state.transfersReducer);
   const [visibleLoader, setVisibleLoader] = useState(true);
   const [quantityTicketsRender, setQuantityTicketsRender] = useState(5);
@@ -19,15 +19,15 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (searchId.length && !stop && !isLoading) {
+    if (searchId.length && !stop && !isLoading && hasNetworkError) {
       fetchTickets(searchId);
     }
-  }, [searchId, stop, isLoading]);
+  }, [searchId, stop, isLoading, hasNetworkError]);
   useEffect(() => {
-    if (!isLoading && stop) {
+    if ((!isLoading && stop) || !hasNetworkError) {
       setVisibleLoader(false);
     }
-  }, [isLoading, stop]);
+  }, [isLoading, stop, hasNetworkError]);
 
   return (
     <div>
@@ -37,6 +37,15 @@ const App = () => {
           <FilterTransfers />
           <div className={styles.right}>
             <SortMenu />
+            {hasNetworkError ? null : (
+              <div className={styles.parentMessage}>
+                <Message
+                  label="Please check your internet connection and refresh the page."
+                  type="warning"
+                  title="Network error!"
+                />
+              </div>
+            )}
             {visibleLoader && <Loader />}
             <TicketsList quantitySlice={quantityTicketsRender} />
             {visibleTicketsLength && tickets.length ? (

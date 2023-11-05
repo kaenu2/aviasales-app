@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './Button.scss';
 import { EBorderStyles, EButtonsType, IProps, TBorderStyles, TButtonsType } from './type';
+import './Button.scss';
 
 export const Button = ({ label, type, borderStyles, callback }: IProps) => {
   const onCheckStyle = (values: TButtonsType): string => {
